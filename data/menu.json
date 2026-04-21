@@ -1,3 +1,25 @@
 {
-  "urunler": []
+  "urunler": [
+    {
+      "title": "Kola",
+      "category": "İçecekler",
+      "price": "60",
+      "description": "Kola",
+      "image": "/assets/images/menu/kedii.jpg"
+    },
+    {
+      "title": "TOST",
+      "category": "Tostlar",
+      "price": "140",
+      "image": "/assets/images/menu/kedii.jpg",
+      "description": "SUCUK, YUMURTA, SALAM, SOSİS, EKMEK, KETÇAP, MAYONEZ."
+    },
+    {
+      "title": "Kumru",
+      "category": "Kumrular",
+      "price": "100",
+      "description": "Sosis,Sucuk,Salam,Kaşar,Turşu,Ketçap,Mayonez",
+      "image": "/assets/images/menu/kedii.jpg"
+    }
+  ]
 }
