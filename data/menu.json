@@ -1,3 +1,11 @@
 {
-  "urunler": []
+  "urunler": [
+    {
+      "title": "Kumru",
+      "category": "Kumrular",
+      "price": "100",
+      "description": "Sosis,Sucuk,Salam,Kaşar,Turşu,Ketçap,Mayonez",
+      "image": "/assets/images/menu/kedii.jpg"
+    }
+  ]
 }
