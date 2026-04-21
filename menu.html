@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menü - Kumru & Tost Haus</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -45,140 +46,79 @@
 
     <section id="kumrular" class="menu-section">
       <h2 class="section-heading">Kumrular</h2>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Klasik Kumru</h3>
-            <p>Özel ekmeği ve lezzetli iç harcı ile hazırlanan klasik kumru.</p>
-            <span class="product-price">₺85</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
+      <div id="grid-kumrular" class="product-grid">
         </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Kaşarlı Kumru</h3>
-            <p>Bol eriyen kaşar peyniri ile hazırlanan sıcak ve lezzetli kumru.</p>
-            <span class="product-price">₺90</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Karışık Kumru</h3>
-            <p>Sucuk, salam, kaşar ve özel malzemelerle hazırlanan doyurucu seçenek.</p>
-            <span class="product-price">₺100</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="tostlar" class="menu-section">
       <h2 class="section-heading">Tostlar</h2>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Kaşarlı Tost</h3>
-            <p>Bol kaşarlı, dışı çıtır içi yumuşak klasik tost seçeneği.</p>
-            <span class="product-price">₺65</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
+      <div id="grid-tostlar" class="product-grid">
         </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Sucuklu Tost</h3>
-            <p>Sucuk ve kaşar uyumuyla hazırlanan sıcak ve doyurucu tost.</p>
-            <span class="product-price">₺75</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Karışık Tost</h3>
-            <p>Kaşar, sucuk ve farklı malzemelerle hazırlanan özel tost.</p>
-            <span class="product-price">₺80</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="icecekler" class="menu-section">
       <h2 class="section-heading">İçecekler</h2>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Ayran</h3>
-            <p>Soğuk ve ferahlatıcı ayran.</p>
-            <span class="product-price">₺20</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
+      <div id="grid-icecekler" class="product-grid">
         </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Kola</h3>
-            <p>Yemeklerin yanında tercih edilen soğuk içecek.</p>
-            <span class="product-price">₺30</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image placeholder-box">Görsel</div>
-          <div class="product-info">
-            <h3>Portakal Suyu</h3>
-            <p>Taze ve serinletici içecek seçeneği.</p>
-            <span class="product-price">₺35</span>
-            <div class="product-actions">
-              <button class="detail-btn">İncele</button>
-              <button class="plus-btn">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // JSON dosyasının yolu
+      const dataUrl = "/data/menu.json";
+
+      fetch(dataUrl)
+        .then(response => {
+          if (!response.ok) throw new Error("JSON dosyası bulunamadı.");
+          return response.json();
+        })
+        .then(data => {
+          // HTML'deki grid alanlarını eşleştiriyoruz
+          const grids = {
+            "Kumrular": document.getElementById("grid-kumrular"),
+            "Tostlar": document.getElementById("grid-tostlar"),
+            "İçecekler": document.getElementById("grid-icecekler")
+          };
+
+          // Gridlerin içini temizle (varsa eski statik veriler gitsin)
+          Object.values(grids).forEach(grid => { if(grid) grid.innerHTML = ""; });
+
+          // JSON içindeki "urunler" listesini dön
+          if(data.urunler && Array.isArray(data.urunler)) {
+            data.urunler.forEach(urun => {
+              // Ürün kartı tasarımı (Senin orijinal tasarımınla aynı)
+              const urunHtml = `
+                <div class="product-card">
+                  <div class="product-image" style="background-image: url('${urun.image}'); background-size: cover; background-position: center; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                    ${urun.image ? '' : 'Görsel'}
+                  </div>
+                  <div class="product-info">
+                    <h3>${urun.title}</h3>
+                    <p>${urun.description || ''}</p>
+                    <span class="product-price">₺${urun.price}</span>
+                    <div class="product-actions">
+                      <button class="detail-btn">İncele</button>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </div>
+                </div>
+              `;
+
+              // Ürünü doğru kategoriye yerleştir
+              if (grids[urun.category]) {
+                grids[urun.category].insertAdjacentHTML("beforeend", urunHtml);
+              }
+            });
+          }
+        })
+        .catch(err => {
+          console.error("Menü yüklenirken hata:", err);
+          // Hata durumunda kullanıcıya bilgi verilebilir
+        });
+    });
+  </script>
 
 </body>
 </html>

@@ -1,19 +1,25 @@
 backend:
   name: git-gateway
-  branch: main # GitHub'daki ana dalın adı (master ise master yaz)
+  branch: main
 
-media_folder: "assets/images/menu" # Görsellerin yükleneceği klasör
+media_folder: "assets/images/menu"
 public_folder: "/assets/images/menu"
 
 collections:
-  - name: "menu"
-    label: "Menü Ürünleri"
-    folder: "data/menu" # Ürünlerin .json veya .md olarak kaydedileceği yer
-    create: true # Yeni ürün ekleme izni
-    slug: "{{slug}}"
-    fields:
-      - { label: "Ürün Adı", name: "title", widget: "string" }
-      - { label: "Kategori", name: "category", widget: "select", options: ["Kumrular", "Tostlar", "İçecekler"] }
-      - { label: "Açıklama", name: "body", widget: "text" }
-      - { label: "Fiyat", name: "price", widget: "string" }
-      - { label: "Ürün Görseli", name: "image", widget: "image" }
+  - name: "menu_sayfasi"
+    label: "Menü Yönetimi"
+    files:
+      - label: "Tüm Ürünler"
+        name: "urun_listesi"
+        file: "data/menu.json" # Veriler bu dosyaya kaydedilecek
+        fields:
+          - label: "Ürünler"
+            name: "urunler"
+            widget: "list"
+            add_to_top: true
+            fields:
+              - { label: "Ürün Adı", name: "title", widget: "string" }
+              - { label: "Kategori", name: "category", widget: "select", options: ["Kumrular", "Tostlar", "İçecekler"] }
+              - { label: "Fiyat", name: "price", widget: "string" }
+              - { label: "Açıklama", name: "description", widget: "text" }
+              - { label: "Ürün Görseli", name: "image", widget: "image" }
