@@ -1,33 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>İçerik Yönetim Paneli</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-      /* Mobilde ekranın sağındaki önizleme panelini zorla gizle */
-      @media (max-width: 768px) {
-        div[class^="Pane2"] {
-          display: none !important;
-        }
-        div[class^="Pane1"] {
-          width: 100% !important;
-          flex: 1 1 0% !important;
-        }
-      }
-      /* Butonların ve inputların daha geniş görünmesi için */
-      .nc-app-container {
-        max-width: 100vw !important;
-      }
-    </style>
-  </head>
-  <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<style>
+  /* Mobilde (Telefonlarda) Arayüzü Tamamen Düzelt */
+  @media (max-width: 768px) {
+    /* 1. Sağdaki önizleme panelini zorla kapat */
+    div[class*="Pane2"], 
+    aside[class*="PreviewPane"] {
+      display: none !important;
+      width: 0 !important;
+    }
+
+    /* 2. Soldaki giriş formunu tam ekran yap */
+    div[class*="Pane1"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 auto !important;
+    }
+
+    /* 3. RESİM SEÇME PENCERESİ (Media Library) DÜZENLEMESİ */
+    /* Pencerenin kendisini tam ekran yap ve ortala */
+    div[role="dialog"] {
+      width: 95vw !important;
+      height: 90vh !important;
+      max-width: none !important;
+      left: 2.5vw !important;
+      top: 5vh !important;
+      margin: 0 !important;
+    }
+
+    /* Resim seçme butonlarının olduğu üst kısmı sığdır */
+    div[role="dialog"] header {
+      flex-wrap: wrap !important;
+      height: auto !important;
+      padding: 10px !important;
+    }
+
+    /* Resimlerin listelendiği alanı genişlet */
+    div[role="dialog"] > div {
+      width: 100% !important;
+    }
     
-    <script>
-      // Kütüphane yüklendikten sonra önizlemeyi devre dışı bırakır
-      CMS.registerPreviewTemplate("menu_sayfasi", () => null);
-    </script>
-  </body>
-</html>
+    /* Butonları yan yana sığdırmak için küçült */
+    button[class*="StyledButton"] {
+      padding: 4px 8px !important;
+      font-size: 12px !important;
+    }
+  }
+</style>
