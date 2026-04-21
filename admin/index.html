@@ -1,62 +1,56 @@
-<style>
-  /* GENEL DÜZENLEME: Bilgisayarda her şey normal kalsın */
-  
-  /* SADECE MOBİL (Telefon ve Tablet) DÜZENLEMESİ */
-  @media (max-width: 1024px) {
-    /* 1. Sağdaki önizleme panelini mobilde gizle */
-    div[class*="Pane2"], 
-    aside[class*="PreviewPane"],
-    section[class*="PreviewPane"] {
-      display: none !important;
-      width: 0 !important;
-    }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>İçerik Yönetim Paneli</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      /* 1. TÜM CİHAZLAR İÇİN ANA DÜZENLEME */
+      .nc-app-container {
+        display: block !important;
+      }
 
-    /* 2. Form panelini (Sol taraf) ekranın tamamına yay */
-    div[class*="Pane1"] {
-      width: 100% !important;
-      max-width: 100% !important;
-      flex: 1 1 auto !important;
-    }
+      /* 2. BİLGİSAYAR GÖRÜNÜMÜ (Ekran genişse) */
+      @media (min-width: 1024px) {
+        /* Sol ve sağ panelleri yan yana getir, boşluğu kapat */
+        div[class^="SplitPane"], .SplitPane {
+          display: flex !important;
+          flex-direction: row !important;
+          width: 100% !important;
+        }
+        div[class*="Pane1"] { width: 50% !important; }
+        div[class*="Pane2"] { width: 50% !important; display: block !important; }
+      }
 
-    /* 3. RESİM SEÇME (Media Library) PENCERESİNİ DÜZELT */
-    div[role="dialog"] {
-      width: 98vw !important;
-      height: 95vh !important;
-      max-width: none !important;
-      left: 1vw !important;
-      top: 2.5vh !important;
-      margin: 0 !important;
-      position: fixed !important;
-    }
-
-    /* Resim seçme butonlarını ve başlığı sığdır */
-    div[role="dialog"] header {
-      flex-wrap: wrap !important;
-      padding: 5px !important;
-    }
-
-    /* Resim galerisi alanını genişlet */
-    div[role="dialog"] > div {
-      width: 100% !important;
-      padding: 10px !important;
-    }
-
-    /* Alt kısımdaki butonların görünürlüğünü sağla */
-    div[class*="ControlPaneContainer"] {
-      padding-bottom: 80px !important;
-    }
-  }
-
-  /* BİLGİSAYAR İÇİN EKSTRA (Boşluk kalmaması için) */
-  @media (min-width: 1025px) {
-    div[class*="Pane1"] {
-      /* Bilgisayarda sol panelin genişliğini %50 civarında tutar */
-      flex: 1 1 50% !important;
-    }
-    div[class*="Pane2"] {
-      /* Sağ panelin görünür olduğundan emin olur */
-      display: block !important;
-      flex: 1 1 50% !important;
-    }
-  }
-</style>
+      /* 3. MOBİL GÖRÜNÜM (Telefonlar) */
+      @media (max-width: 1023px) {
+        /* Sağ paneli (önizleme) tamamen yok et */
+        div[class*="Pane2"], aside, [class*="PreviewPane"] {
+          display: none !important;
+          width: 0 !important;
+          visibility: hidden !important;
+        }
+        /* Sol paneli (form) tam ekran yap */
+        div[class*="Pane1"] {
+          width: 100% !important;
+          flex: 1 1 auto !important;
+        }
+        /* Resim seçme penceresini (dialog) telefon ekranına zorla sığdır */
+        div[role="dialog"] {
+          width: 96vw !important;
+          left: 2vw !important;
+          top: 2vh !important;
+          height: 96vh !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // JavaScript ile önizlemeyi kapatma (Garanti olsun diye)
+      CMS.registerPreviewTemplate("menu_sayfasi", () => null);
+    </script>
+  </body>
+</html>
