@@ -1,6 +1,13 @@
 {
   "urunler": [
     {
+      "title": "Kola",
+      "category": "İçecekler",
+      "price": "60",
+      "description": "Kola",
+      "image": "/assets/images/menu/kedii.jpg"
+    },
+    {
       "title": "TOST",
       "category": "Tostlar",
       "price": "140",
