@@ -6,42 +6,42 @@
     <title>İçerik Yönetim Paneli</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-      /* 1. TÜM CİHAZLAR İÇİN ANA DÜZENLEME */
-      .nc-app-container {
-        display: block !important;
+      /* BİLGİSAYAR: Her şey olduğu gibi kalsın */
+      @media (min-width: 1025px) {
+        div[class^="SplitPane"] { display: flex !important; }
       }
 
-      /* 2. BİLGİSAYAR GÖRÜNÜMÜ (Ekran genişse) */
-      @media (min-width: 1024px) {
-        /* Sol ve sağ panelleri yan yana getir, boşluğu kapat */
-        div[class^="SplitPane"], .SplitPane {
-          display: flex !important;
-          flex-direction: row !important;
-          width: 100% !important;
-        }
-        div[class*="Pane1"] { width: 50% !important; }
-        div[class*="Pane2"] { width: 50% !important; display: block !important; }
-      }
-
-      /* 3. MOBİL GÖRÜNÜM (Telefonlar) */
-      @media (max-width: 1023px) {
-        /* Sağ paneli (önizleme) tamamen yok et */
-        div[class*="Pane2"], aside, [class*="PreviewPane"] {
+      /* MOBİL: Beyaz ekranı çözüp formu tam ekran yapan kısım */
+      @media (max-width: 1024px) {
+        /* Sağdaki önizleme panelini tamamen etkisiz hale getir */
+        div[class*="Pane2"], 
+        aside[class*="PreviewPane"] {
           display: none !important;
           width: 0 !important;
-          visibility: hidden !important;
+          height: 0 !important;
+          overflow: hidden !important;
         }
-        /* Sol paneli (form) tam ekran yap */
+
+        /* Soldaki form panelini zorla görünür ve tam ekran yap */
         div[class*="Pane1"] {
+          display: block !important;
           width: 100% !important;
-          flex: 1 1 auto !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          position: relative !important;
         }
-        /* Resim seçme penceresini (dialog) telefon ekranına zorla sığdır */
+
+        /* Ana taşıyıcıyı esnet */
+        div[class^="SplitPane"] {
+          display: block !important;
+        }
+
+        /* Resim seçme (Media Library) penceresi düzenlemesi */
         div[role="dialog"] {
-          width: 96vw !important;
-          left: 2vw !important;
-          top: 2vh !important;
-          height: 96vh !important;
+          width: 98vw !important;
+          left: 1vw !important;
+          top: 1vh !important;
+          height: 98vh !important;
         }
       }
     </style>
@@ -49,7 +49,7 @@
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // JavaScript ile önizlemeyi kapatma (Garanti olsun diye)
+      // Kategori ismine göre önizlemeyi kapat (config.yml'deki name ile aynı olmalı)
       CMS.registerPreviewTemplate("menu_sayfasi", () => null);
     </script>
   </body>
