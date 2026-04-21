@@ -1,6 +1,13 @@
 {
   "urunler": [
     {
+      "title": "Kavurma Tost",
+      "category": "Tostlar",
+      "price": "160",
+      "description": "Kavurma Kaşarlı Tost",
+      "image": "/assets/images/menu/kedii.jpg"
+    },
+    {
       "title": "Kola",
       "category": "İçecekler",
       "price": "60",
