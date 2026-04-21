@@ -1,6 +1,13 @@
 {
   "urunler": [
     {
+      "title": "TOST",
+      "category": "Tostlar",
+      "price": "140",
+      "image": "/assets/images/menu/kedii.jpg",
+      "description": "SUCUK, YUMURTA, SALAM, SOSİS, EKMEK, KETÇAP, MAYONEZ."
+    },
+    {
       "title": "Kumru",
       "category": "Kumrular",
       "price": "GOTTEN",
