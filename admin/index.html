@@ -5,13 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>İçerik Yönetim Paneli</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      /* Mobilde ekranın sağındaki önizleme panelini zorla gizle */
+      @media (max-width: 768px) {
+        div[class^="Pane2"] {
+          display: none !important;
+        }
+        div[class^="Pane1"] {
+          width: 100% !important;
+          flex: 1 1 0% !important;
+        }
+      }
+      /* Butonların ve inputların daha geniş görünmesi için */
+      .nc-app-container {
+        max-width: 100vw !important;
+      }
+    </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
     <script>
-      // Sağdaki önizleme panelini tamamen kapatan sihirli satır:
-      CMS.registerPreviewStyle("body { display: none; }"); 
-      // Alternatif olarak daha temiz bir çözüm:
+      // Kütüphane yüklendikten sonra önizlemeyi devre dışı bırakır
       CMS.registerPreviewTemplate("menu_sayfasi", () => null);
     </script>
   </body>
