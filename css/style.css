@@ -218,16 +218,28 @@ body {
   transform: translateY(-4px);
 }
 
+/* Bu kısımları mevcut CSS dosyanla değiştir */
+
 .category-image {
   width: 100%;
-  height: 140px;
+  height: 180px; /* Biraz daha yükseklik görselleri daha iyi gösterir */
+  overflow: hidden; /* Taşmaları engeller */
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Resmin basık görünmesini engeller ve alanı doldurur */
+  display: block;
 }
 
 .category-card h3 {
-  padding: 14px 16px 18px;
-  font-size: 22px;
-  color: #fff;
-  background: #222;
+  padding: 15px;
+  font-size: 20px;
+  color: #222; /* Yazıyı siyah/koyu gri yapıyoruz */
+  background: transparent; /* Siyah arka planı kaldırıyoruz */
+  text-align: center; /* Başlığı ortalıyoruz */
+  margin: 0;
 }
 
 /* SECTION SPACING */
